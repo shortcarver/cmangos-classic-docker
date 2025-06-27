@@ -3,28 +3,28 @@ services:
   mangosd:
     image: mangos-server
     depends_on:
-      - mariadb
+      - db
     restart: always
     ports:
       - "8085:8085"
     stdin_open: true
     tty: true
     volumes:
-      - ./gamedata/:/home/mangos/gamedata
-      - ./config/:/home/mangos/etc
-    command: ["/home/mangos/bin/mangosd"]
+      - ./gamedata-extract/:/usr/local/gamedata
+      - ./config/:/usr/local/etc/
+    command: ["/usr/local/bin/mangosd"]
 
   realmd:
     image: mangos-server
     depends_on:
-      - mariadb
+      - db
     restart: always
     ports:
       - "3724:3724"
     volumes:
-      - ./gamedata/:/home/mangos/gamedata
-      - ./config/:/home/mangos/etc
-    command: ["/home/mangos/bin/realmd"]
+      - ./gamedata-extract/:/usr/local/gamedata
+      - ./config/:/usr/local/etc/
+    command: ["/usr/local/bin/realmd"]
 
   db:
     image: mysql:8.0.32
@@ -40,7 +40,7 @@ services:
   phpmyadmin:
     image: phpmyadmin
     depends_on:
-      - mariadb
+      - db
     restart: unless-stopped
     ports:
       - 8081:80
