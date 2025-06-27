@@ -1,0 +1,8 @@
+FROM build-server 
+
+COPY ./extract-game-data.sh /usr/local/bin/tools/
+RUN chmod a+x /usr/local/bin/tools/extract-game-data.sh
+
+WORKDIR /usr/local/bin
+
+CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,11 @@
+FROM ubuntu:22.04
+
+RUN apt update
+RUN apt upgrade -y
+
+# RUN apt install git make cmake libssl-dev libbz2-dev build-essential mariadb-server mariadb-client default-libmysqlclient-dev libace-dev python2 net-tools screen gdb -y
+RUN apt install libreadline-dev -y
+RUN apt install build-essential gcc g++ automake git-core autoconf make patch libmysql++-dev mysql-client libtool libssl-dev grep binutils zlib1g-dev libbz2-dev cmake libboost-all-dev -y
+
+RUN apt install g++-12
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12 --slave /usr/bin/g++ g++ /usr/bin/g++-12

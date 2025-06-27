@@ -1,0 +1,7 @@
+config
+database
+gamedata
+.DS_Store
+gamedata-extract
+database-code
+server-code

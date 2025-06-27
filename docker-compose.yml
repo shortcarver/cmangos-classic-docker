@@ -1,0 +1,57 @@
+name: mangos-docker
+services:
+  mangosd:
+    image: mangos-server
+    depends_on:
+      - mariadb
+    restart: always
+    ports:
+      - "8085:8085"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./gamedata/:/home/mangos/gamedata
+      - ./config/:/home/mangos/etc
+    command: ["/home/mangos/bin/mangosd"]
+
+  realmd:
+    image: mangos-server
+    depends_on:
+      - mariadb
+    restart: always
+    ports:
+      - "3724:3724"
+    volumes:
+      - ./gamedata/:/home/mangos/gamedata
+      - ./config/:/home/mangos/etc
+    command: ["/home/mangos/bin/realmd"]
+
+  db:
+    image: mysql:8.0.32
+    hostname: mangosdb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/:/var/lib/mysql/
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mangosdb
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=root # Must match the `MARIADB_ROOT_PASSWORD` environment variable of the `database` service
+
+networks:
+  default:
+    name: mangos_network 
+    external: true
+

@@ -1,0 +1,23 @@
+FROM ubuntu-base
+
+WORKDIR /home/mangos
+RUN cd /home/mangos
+
+RUN mkdir db
+RUN mkdir bin
+RUN mkdir gamedata
+RUN mkdir tools
+RUN mkdir logs
+
+# RUN git clone https://github.com/mangoszero/database.git /home/mangos/database --recursive
+# RUN git clone https://github.com/mangoszero/server.git /home/mangos/server --recursive
+COPY ./database-code/ /home/mangos/database/
+COPY ./server-code/ /home/mangos/server/
+
+RUN cmake -S /home/mangos/server/ -B /home/mangos/build/ -DBUILD_EXTRACTORS=ON -DPCH=1 -DDEBUG=0 -DBUILD_PLAYERBOTS=ON -DBUILD_AHBOT=ON
+
+WORKDIR /home/mangos/build
+RUN make -j 2
+RUN make -j 2 install
+
+CMD ["tail", "-f", "/dev/null"]
