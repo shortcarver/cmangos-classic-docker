@@ -35,6 +35,7 @@ initdb:
 		-e PMA_USER=root \
 		-e PMA_PASSWORD=root \
 		-p 8081:80 \
+		-d \
 		phpmyadmin
 	docker run --network=mangos_network --interactive --tty --rm \
 		-v ./database-code/:/home/mangos/database \
