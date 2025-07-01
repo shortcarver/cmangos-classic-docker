@@ -42,8 +42,8 @@ initdb:
 		-w /home/mangos/database \
 		mangos-server \
 		bash ./InstallFullDB.sh
-	# docker stop mangosdb
-	# docker rm mangosdb
+	docker stop mangosdb
+	docker rm mangosdb
 
 clean-database:
 	cd database
@@ -65,7 +65,7 @@ extract-config:
 		cp -R /usr/local/etc/ /home/mangos/
 
 up:
-	docker compose up 
+	docker compose up -d ; docker compose logs mangosd -f
 
 down:
 	docker compose down
