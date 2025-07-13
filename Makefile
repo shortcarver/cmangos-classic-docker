@@ -71,4 +71,5 @@ down:
 	docker compose down
 
 attach:
+	echo "CTRL+P CTRL+Q to detach"
 	docker attach mangos-docker-mangosd-1

@@ -43,7 +43,7 @@ services:
       - db
     restart: unless-stopped
     ports:
-      - 8081:80
+      - "8081:80"
     environment:
       - PMA_HOST=mangosdb
       - PMA_PORT=3306
