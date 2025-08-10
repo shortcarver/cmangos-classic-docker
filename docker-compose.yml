@@ -12,7 +12,10 @@ services:
     volumes:
       - ./gamedata-extract/:/usr/local/gamedata
       - ./config/:/usr/local/etc/
+    environment:
+      - TZ=Pacific/Gambier
     command: ["/usr/local/bin/mangosd"]
+
 
   realmd:
     image: mangos-server

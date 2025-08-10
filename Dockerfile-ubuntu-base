@@ -5,6 +5,7 @@ RUN apt upgrade -y
 
 RUN apt install libreadline-dev -y
 RUN apt install build-essential gcc g++ automake git-core autoconf make patch libmysql++-dev mysql-client libtool libssl-dev grep binutils zlib1g-dev libbz2-dev cmake libboost-all-dev -y
+RUN DEBIAN_FRONTEND=noninteractive apt -y install tzdata
 
 RUN apt install g++-12 -y
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12 --slave /usr/bin/g++ g++ /usr/bin/g++-12
