@@ -46,6 +46,10 @@ initdb:
 	docker rm mangosdb
 
 clean-database:
+	docker stop mangosdb
+	docker rm mangosdb
+	docker stop phpmyadmin
+	docker rm phpmyadmin
 	rm -rf ./database/*
 
 extract-gamedata:
