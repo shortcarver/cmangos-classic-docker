@@ -46,8 +46,7 @@ initdb:
 	docker rm mangosdb
 
 clean-database:
-	cd database
-	rm -rf *
+	rm -rf ./database/*
 
 extract-gamedata:
 	docker run --network=mangos_network --interactive --tty --rm \
