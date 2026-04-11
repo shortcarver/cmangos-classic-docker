@@ -29,4 +29,30 @@ Generate config files
 make extract-config
 ```
 
+Update configuration
 
+Init the database
+```sh
+make initdb
+```
+```
+-----------------------------
+Database host...........: mangosdb
+Database port...........: 3306
+MySQL user..............: mangos (password is defined in InstallFullDB.config)
+MySQL user IP access....: mangosdb
+MySQL binary path.......: /usr/bin/mysql
+MySQL dump binary path..: /usr/bin/mysqldump
+Core path...............: /home/mangos/server
+World database name.....: classicmangos
+Character database name.: classiccharacters
+Realm database name.....: classicrealmd
+Logs database name......: classiclogs
+LOCALES.................: YES
+DEV_UPDATES.............: NO
+AHBOT...................: YES
+PLAYERBOTS_DB...........: YES
+```
+
+/usr/local/bin/
+/home/mangos/build
