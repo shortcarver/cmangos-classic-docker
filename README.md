@@ -36,11 +36,10 @@ Init the database
 make initdb
 ```
 ```
------------------------------
 Database host...........: mangosdb
 Database port...........: 3306
-MySQL user..............: mangos (password is defined in InstallFullDB.config)
-MySQL user IP access....: mangosdb
+MySQL user..............: mangos (Use the password 'password')
+MySQL user IP access....: 172.18.0.4
 MySQL binary path.......: /usr/bin/mysql
 MySQL dump binary path..: /usr/bin/mysqldump
 Core path...............: /home/mangos/server
@@ -53,6 +52,3 @@ DEV_UPDATES.............: NO
 AHBOT...................: YES
 PLAYERBOTS_DB...........: YES
 ```
-
-/usr/local/bin/
-/home/mangos/build
